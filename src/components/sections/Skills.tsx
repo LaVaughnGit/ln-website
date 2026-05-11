@@ -3,6 +3,29 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 
+const BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
+
+const iconMap: Record<string, { src: string; invert?: boolean }> = {
+  Python:       { src: `${BASE}/python/python-original.svg` },
+  TypeScript:   { src: `${BASE}/typescript/typescript-original.svg` },
+  JavaScript:   { src: `${BASE}/javascript/javascript-original.svg` },
+  Java:         { src: `${BASE}/java/java-original.svg` },
+  "C++":        { src: `${BASE}/cplusplus/cplusplus-original.svg` },
+  SQL:          { src: `${BASE}/mysql/mysql-original.svg` },
+  React:        { src: `${BASE}/react/react-original.svg` },
+  "Next.js":    { src: `${BASE}/nextjs/nextjs-original.svg`, invert: true },
+  "Node.js":    { src: `${BASE}/nodejs/nodejs-original.svg` },
+  PyTorch:      { src: `${BASE}/pytorch/pytorch-original.svg` },
+  TensorFlow:   { src: `${BASE}/tensorflow/tensorflow-original.svg` },
+  FastAPI:      { src: `${BASE}/fastapi/fastapi-original.svg` },
+  Git:          { src: `${BASE}/git/git-original.svg` },
+  Docker:       { src: `${BASE}/docker/docker-original.svg` },
+  AWS:          { src: `${BASE}/amazonwebservices/amazonwebservices-plain-wordmark.svg` },
+  Vercel:       { src: `${BASE}/vercel/vercel-original.svg`, invert: true },
+  PostgreSQL:   { src: `${BASE}/postgresql/postgresql-original.svg` },
+  Linux:        { src: `${BASE}/linux/linux-original.svg` },
+};
+
 const skillGroups = [
   {
     category: "Languages",
@@ -45,11 +68,23 @@ export default function Skills() {
                 {group.category}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="text-sm py-1 px-3">
-                    {skill}
-                  </Badge>
-                ))}
+                {group.skills.map((skill) => {
+                  const icon = iconMap[skill];
+                  return (
+                    <Badge key={skill} variant="secondary" className="text-sm py-1 px-3 gap-1.5">
+                      {icon && (
+                        <img
+                          src={icon.src}
+                          alt={skill}
+                          width={16}
+                          height={16}
+                          className={`inline-block${icon.invert ? " dark:invert" : ""}`}
+                        />
+                      )}
+                      {skill}
+                    </Badge>
+                  );
+                })}
               </div>
             </motion.div>
           ))}

@@ -9,6 +9,7 @@ const photos = [
   "/images/army2.jpg",
   "/images/skydiving1.jpg",
   "/images/snowboarding1.jpg",
+  "/images/scubadiving1.jpg",
 ];
 
 export default function About() {
@@ -43,13 +44,13 @@ export default function About() {
             className="space-y-4 text-muted-foreground text-lg leading-relaxed flex-1"
           >
             <p>
-              I&apos;m a software engineer passionate about building things at the intersection of
-              software engineering and machine learning. I enjoy crafting clean, scalable code
-              and exploring how AI can solve real-world problems.
+              I&apos;m a <b>software engineer</b>, and <b>visionary leader</b> with <b>6 years</b> of military experience who is
+              passionate about building projects from scratch and scaling each one significantly.
             </p>
             <p>
-              When I&apos;m not coding, you can find me diving into research papers, working on
-              personal projects, or learning something new.
+              When I&apos;m not coding, you can find me mastering the different elements of the world from <b>skydiving</b>,
+              to <b>snowboarding</b> and <b>scubadiving</b>. I also spend my free time engineering gamecube controllers and
+              creating LoFi-style music.
             </p>
           </motion.div>
 
@@ -84,9 +85,8 @@ export default function About() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === current ? "w-5 bg-white" : "w-1.5 bg-white/50"
-                  }`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-5 bg-white" : "w-1.5 bg-white/50"
+                    }`}
                   aria-label={`Go to photo ${i + 1}`}
                 />
               ))}

@@ -32,7 +32,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-xl md:text-2xl text-muted-foreground mb-8"
         >
-          Software Engineer & ML Enthusiast
+          Software Engineer & Adventurer
         </motion.p>
 
         <motion.div
