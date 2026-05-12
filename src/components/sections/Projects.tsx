@@ -2,6 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 function GithubIcon({ size = 18 }: { size?: number }) {
   return (
@@ -10,8 +14,8 @@ function GithubIcon({ size = 18 }: { size?: number }) {
     </svg>
   );
 }
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+
+const GITHUB_USER = "LaVaughnGit";
 
 const projects = [
   {
@@ -39,6 +43,55 @@ const projects = [
     demo: null,
   },
 ];
+
+function GitHubActivity() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
+  const activityGraphUrl = `https://github-readme-activity-graph.vercel.app/graph?username=${GITHUB_USER}&theme=${isDark ? "github-dark" : "github"}&hide_border=true&bg_color=00000000&area=true`;
+
+  const statsUrl = `https://github-readme-stats.vercel.app/api?username=${GITHUB_USER}&show_icons=true&hide_border=true&bg_color=00000000&title_color=${isDark ? "e6edf3" : "24292f"}&text_color=${isDark ? "8b949e" : "57606a"}&icon_color=${isDark ? "58a6ff" : "0969da"}&ring_color=${isDark ? "58a6ff" : "0969da"}`;
+
+  const streakUrl = `https://github-readme-streak-stats.herokuapp.com?user=${GITHUB_USER}&hide_border=true&background=00000000&ring=${isDark ? "58a6ff" : "0969da"}&fire=${isDark ? "58a6ff" : "0969da"}&currStreakLabel=${isDark ? "e6edf3" : "24292f"}&sideLabels=${isDark ? "8b949e" : "57606a"}&dates=${isDark ? "8b949e" : "57606a"}&currStreakNum=${isDark ? "e6edf3" : "24292f"}&sideNums=${isDark ? "e6edf3" : "24292f"}`;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="mt-16 space-y-6"
+    >
+      {/* Stats row */}
+      <div className="flex flex-wrap gap-4 justify-center">
+        {mounted && (
+          <>
+            <img
+              src={streakUrl}
+              alt="GitHub Streak"
+              className="h-auto w-full max-w-sm rounded-lg"
+            />
+          </>
+        )}
+      </div>
+
+      {/* Contribution activity graph */}
+      {mounted && (
+        <div className="rounded-xl overflow-hidden border border-border">
+          <img
+            src={activityGraphUrl}
+            alt="GitHub Contribution Activity"
+            className="w-full h-auto"
+          />
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 export default function Projects() {
   return (
@@ -105,6 +158,8 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
+
+        <GitHubActivity />
       </div>
     </section>
   );
