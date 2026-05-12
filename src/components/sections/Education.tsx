@@ -4,10 +4,16 @@ import { motion } from "framer-motion";
 
 const education = [
   {
-    degree: "B.S. Computer Science",
-    school: "Your University",
-    period: "2021 – 2025",
-    details: "Relevant coursework: Machine Learning, Data Structures, Algorithms, Computer Vision.",
+    degree: "M.Sc. Computer Science",
+    school: "Nova Southeastern University",
+    period: "2024 – 2025",
+    details: "Concentration in Artificial Intelligence",
+  },
+  {
+    degree: "B.Sc. Computer Science",
+    school: "Nova Southeastern University",
+    period: "2021 – 2024",
+    details: "Relevant coursework: Data Structures, Algorithms Analysis, Game Creation",
   },
 ];
 
