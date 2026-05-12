@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 
 const BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
+const SI = "https://cdn.simpleicons.org";
 
 const iconMap: Record<string, { src: string; invert?: boolean }> = {
   Python:       { src: `${BASE}/python/python-original.svg` },
@@ -12,6 +13,8 @@ const iconMap: Record<string, { src: string; invert?: boolean }> = {
   Java:         { src: `${BASE}/java/java-original.svg` },
   "C++":        { src: `${BASE}/cplusplus/cplusplus-original.svg` },
   SQL:          { src: `${BASE}/mysql/mysql-original.svg` },
+  "C#":         { src: `${BASE}/csharp/csharp-original.svg` },
+  Ruby:         { src: `${BASE}/ruby/ruby-original.svg` },
   React:        { src: `${BASE}/react/react-original.svg` },
   "Next.js":    { src: `${BASE}/nextjs/nextjs-original.svg`, invert: true },
   "Node.js":    { src: `${BASE}/nodejs/nodejs-original.svg` },
@@ -24,12 +27,15 @@ const iconMap: Record<string, { src: string; invert?: boolean }> = {
   Vercel:       { src: `${BASE}/vercel/vercel-original.svg`, invert: true },
   PostgreSQL:   { src: `${BASE}/postgresql/postgresql-original.svg` },
   Linux:        { src: `${BASE}/linux/linux-original.svg` },
+  Claude:       { src: `${SI}/anthropic/000000`, invert: true },
+  Cursor:       { src: `${SI}/cursor/000000`, invert: true },
+  Gemini:       { src: `${SI}/googlegemini/4285F4` },
 };
 
 const skillGroups = [
   {
     category: "Languages",
-    skills: ["Python", "TypeScript", "JavaScript", "Java", "C++", "SQL"],
+    skills: ["Python", "TypeScript", "JavaScript", "Java", "C++", "SQL", "C#", "Ruby"],
   },
   {
     category: "Frameworks & Libraries",
@@ -37,7 +43,7 @@ const skillGroups = [
   },
   {
     category: "Tools & Platforms",
-    skills: ["Git", "Docker", "AWS", "Vercel", "PostgreSQL", "Linux"],
+    skills: ["Git", "Docker", "AWS", "Vercel", "PostgreSQL", "Linux", "Claude", "Cursor", "Gemini"],
   },
 ];
 
